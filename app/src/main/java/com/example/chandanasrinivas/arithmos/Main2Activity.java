@@ -1,5 +1,6 @@
 package com.example.chandanasrinivas.arithmos;
 
+import android.content.Intent;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,6 +50,7 @@ public class Main2Activity extends AppCompatActivity {
         b24=(Button)findViewById(R.id.b9);
         b25=(Button)findViewById(R.id.b10);
         Timer=(Chronometer)findViewById(R.id.timer);
+        //long counter=0;
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -279,7 +281,10 @@ public class Main2Activity extends AppCompatActivity {
                                                                                                                                                                                                                                                                                                                                                                                                                     public void onClick(View v) {
                                                                                                                                                                                                                                                                                                                                                                                                                         b25.setVisibility(View.INVISIBLE);
                                                                                                                                                                                                                                                                                                                                                                                                                         Timer.stop();
+                                                                                                                                                                                                                                                                                                                                                                                                                        callIntent(Timer);
+
                                                                                                                                                                                                                                                                                                                                                                                                                     }
+
                                                                                                                                                                                                                                                                                                                                                                                                                 });
                                                                                                                                                                                                                                                                                                                                                                                                             }
                                                                                                                                                                                                                                                                                                                                                                                                         });
@@ -383,6 +388,13 @@ public class Main2Activity extends AppCompatActivity {
 
 
 
+
+    }
+    void callIntent(Chronometer Timer)
+    {
+        Intent intent = new Intent(Main2Activity.this,Main3Activity.class);
+        intent.putExtra("Score",SystemClock.elapsedRealtime()-Timer.getBase());
+        startActivity(intent);
     }
 
 
